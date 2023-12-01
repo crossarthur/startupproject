@@ -1,0 +1,49 @@
+{%extends 'base.html'%}
+
+
+{%block title%} Attendance {%endblock%}
+
+
+{%block body%}
+
+<div class="row">
+    <h1 class="text-center">Apply Attendance</h1>
+    <hr>
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        {%include 'messages.html'%}
+        <form class="form-group" action="{%url 'attendance'%}" method="post">
+           {%csrf_token%}
+            <label for="name"><b>Name</b></label>
+            <input type="text" class="form-control" value="{{user.first_name}}" name="name"  id="name" required>
+
+             <div class="form-group">
+           <label for="email"><b>Email</b></label>
+            <input type="email" value="{{user.email}}" class="form-control" name="email" readonly id="email" required>
+            </div>
+
+            <div class="form-group">
+           <label for="date"><b>Date</b></label>
+            <input type="date" class="form-control" name="date"  id="date" required>
+            </div>
+
+            <div class="form-group">
+           <label for="logintime"><b>Logout Time</b></label>
+            <input type="time" class="form-control" name="logintime"  id="logintime" required>
+            </div>
+
+            <div class="form-group">
+             <label for="logouttime"><b>Login Time</b></label>
+            <input type="time" class="form-control" name="logouttime"  id="logouttime" required>
+            </div>
+            <div class=" d-grid gap-2 mt-3">
+            <button type="submit" class="btn btn-success">Apply</button>
+            </div>
+        </form>
+
+
+
+    </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,67 @@
+{%extends 'base.html'%}
+
+{%block title%} Courses Details
+
+
+{%endblock%}
+
+
+{%block body%}
+ <style>
+      .image-thumb {
+            height: 200px;
+            object-fit: cover;
+      }
+
+  </style>
+
+<div class="container mt-2">
+    <h1 class="text-center">Available Courses</h1>
+    {%include 'messages.html'%}
+    <div class="row">
+
+        {%for c in courses%}
+        <div class="col-md-3">
+            <div><a href="{%url 'courses'%}" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-backward-fill mx-2" viewBox="0 0 16 16">
+                  <path d="M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5z"/>
+                </svg> Go Back</a></div>
+
+                {%if c.image%}
+              <img src="{{c.image.url}}" id="card-img" class="card-img-top p-3" height="200px" alt="...">
+                {%endif%}
+                <hr>
+                <h3>{{c.course_name}}</h3>
+                <hr>
+                <h5>Duration <span><b>{{c.course_duration}} Months</b></span></h5>
+                <hr>
+                <h5>Fee Structure <span><b>₦{{c.course_fee}}</b></span></h5>
+                <hr>
+            </div>
+                <div class="col-md-6">
+                    <div class="card p-3">
+                        <div class="card-title">
+                            <h3>About Course</h3>
+                        </div>
+                        <div class="card-body">
+                            {{c.about_course|safe}}
+                        </div>
+                    </div>
+                    </div>
+
+                     <div class="col-md-3">
+                    <div class="card p-3">
+                        <div class="card-title">
+                            <h3>Syllabus</h3>
+                        </div>
+                        <div class="card-body">
+                            {{c.syllabus|safe}}
+                        </div>
+                    </div>
+
+
+              {%endfor%}
+            </div>
+
+         </div>
+     </div>
+{%endblock%}

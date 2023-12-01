@@ -1,0 +1,178 @@
+
+{%extends 'base.html'%}
+
+
+{%block title%} Update Details {%endblock%}
+
+
+{%block body%}
+<div class="container">
+
+    <div><a href="{%url 'candidate_profile'%}" class="btn btn-primary mt-4">Go Back</a></div>
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1 class="text-center bg-primary text-light mt-3">Update Details</h1>
+            {%include 'messages.html'%}
+
+            <hr>
+            <form action="{%url 'candidate_update' data.candidate_id%}" method="post">
+                {%csrf_token%}
+                <br/>
+                <label for="fname">First Name</label>
+                <div class="form-group">
+                    <input
+                     value="{{data.first_name}}"
+                    type="text"
+                    class="form-control p-2 mb-3"
+                    id="fname"
+                    name="fname"
+                    placeholder="Enter First Name"
+                    required
+                    />
+                </div>
+                 <label for="lname">Last Name</label>
+                <div class="form-group">
+                    <input
+                    value="{{data.last_name}}"
+                    type="text"
+                    class="form-control p-2 mb-3"
+                    id="lname"
+                    name="lname"
+                    placeholder="Enter Last Name"
+                    required
+                    />
+                </div>
+
+                <label for="num">Phone Number</label>
+                <div class="form-group">
+                    <input
+                      value="{{data.Phone_number}}"
+                    type="number"
+                    class="form-control p-2 mb-3"
+                    id="num"
+                    name="num"
+                    placeholder="Enter Valid Number"
+                    required
+                    />
+                </div>
+                <label for="altnum">Alternate Number</label>
+                <div class="form-group">
+                    <input
+                    value="{{data.alternate_number}}"
+                    type="number"
+                    class="form-control p-2 mb-3"
+                    id="altnum"
+                    name="altnum"
+                    placeholder="Alternate Numbe"
+                    required
+                    />
+                </div>
+
+                <label for="email">Email</label>
+                <div class="form-group">
+                    <input
+
+                    value="{{request.user.email}}"
+                    class="form-control p-2 mb-3"
+                    id="email"
+                    name="email"
+
+                    />
+                </div>
+
+                <label for="cname">College Name</label>
+                <div class="form-group">
+                    <input
+                    value="{{data.college_name}}"
+                    type="text"
+                    class="form-control p-2 mb-3"
+                    id="cname"
+                    name="cname"
+                    placeholder="Enter College Name"
+                    required
+                    />
+                </div>
+
+                 <label for="address">Address</label>
+                <div class="form-group">
+                    <input
+                     value="{{data.address}}"
+                    type="text"
+                    class="form-control p-2 mb-3"
+                    id="address"
+                    name="address"
+                    placeholder="Enter Address"
+                    required
+                    />
+                </div>
+
+                <label for="street">Street</label>
+                <div class="form-group">
+                    <input
+                     value="{{data.street}}"
+                    type="text"
+                    class="form-control p-2 mb-3"
+                    id="street"
+                    name="street"
+                    placeholder="Street Name"
+                    required
+                    />
+                </div>
+
+                 <label for="city">City</label>
+                <div class="form-group">
+                    <input
+                     value="{{data.city}}"
+                    type="text"
+                    class="form-control p-2 mb-3"
+                    id="city"
+                    name="city"
+                    placeholder="City"
+                    required
+                    />
+                </div>
+
+                 <label for="pin">Pin Code</label>
+                <div class="form-group">
+                    <input
+                     value="{{data.pincode}}"
+                    type="text"
+                    class="form-control p-2 mb-3"
+                    id="pin"
+                    name="pin"
+                    placeholder="Pin Code"
+                    required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="scourse"><b>Select Course</b></label>
+                    <select class="form-control" id="scourse" name="scourse" required>
+                    <option value="{{data.course}}">{{data.course}}</option>
+                    {%for c in courses%}
+                    <option value="{{c.course_name}}">{{c.course_name}}</option>
+                    {%endfor%}
+
+                    </select>
+                </div>
+                <br>
+                <div class="d-grid gap-2 mb3">
+                    <button type="submit" class="btn btn-success get-started-btn">Update Details</button>
+                </div>
+
+            </form>
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+
+
+</div>
+
+
+{%endblock%}

@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:5000
+From: webmaster@localhost
+To: arthurnwolisa@gmail.com
+Date: Mon, 04 Sep 2023 06:37:55 -0000
+Message-ID: <169380947560.1360.1014044876069870613@DESKTOP-BLMK25I>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:5000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:5000/auth/password_reset_confirm/Mw/btzrv7-5debec447199e343ac25db47d68d9da1
+
+Your username, in case you’ve forgotten: arthurnwolisa@gmail.com
+
+Thanks for using our site!
+
+The 127.0.0.1:5000 team
+
+
+
+-------------------------------------------------------------------------------

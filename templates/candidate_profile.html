@@ -1,0 +1,104 @@
+{%extends 'base.html'%}
+
+
+{%block title%} Candidate Profile {%endblock%}
+
+
+{%block body%}
+<div class="container mt-2">
+<h1 class="text-center">Welcome</h1>
+<div class="row">
+
+  <div class="col-md-3">
+      <div><a href="{%url 'index'%}" class="btn btn-primary">Go Back</a></div>
+  </div>
+
+   <div class="col-md-7">
+       {%include 'messages.html'%}
+       <div class="card p-3">
+           <div class="card-title">
+               <h3>Candidate Details</h3>
+               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                   <a href="{%url 'candidate_update' details.candidate_id%}" class="btn btn-light d-grid gap-2 d-md-flex justify-content-center-md-end">
+                     Update Details
+                   </a>
+               </div>
+               <div class="card-body">
+                   <h5>Candidate Id: <b>{{details.candidate_id}}</b></h5><hr>
+                   <h5>Name: <b>{{details.first_name}}</b> <b>{{details.last_name}}</b></h5><hr>
+                   <h5>Phone Number: <b>{{details.Phone_number}}</b></h5><hr>
+                   <h5>Alternate Number: <b>{{details.alternate_number}}</b></h5><hr>
+                   <h5>Email: <b>{{details.email}}</b></h5><hr>
+                   <h5>College Name: <b>{{details.college_name}}</b></h5><hr>
+                   <h5>Address: <b>{{details.address}}</b></h5><hr>
+                   <h5>Street: <b>{{details.street}}</b></h5><hr>
+                   <h5>City: <b>{{details.city}}</b></h5><hr>
+                   <h5>Pin Code: <b>{{details.pincode}}</b></h5><hr>
+                   <h5>Computer Knowledge: <b>{{details.computer_knowledge}}</b></h5><hr>
+                   <h5>Course: <b>{{details.course}}</b></h5><hr>
+                   <h5>Enrollment Date: <b>{{details.timestamp}}</b></h5><hr>
+
+
+                   <h4>Trainer Assigned : {{details.trainer}}</h4>
+                   <hr>
+                   <h3>Payment Status</h3>
+                   <hr>
+                   <h4>Amount Paid : {{stats.amount}}</h4>
+                   <h4>Amount Balance : {{stats.balance}}</h4>
+                   {%if stats.paymentstatus == True%}
+                   <h4>Payment Status : Paid</h4>
+                   {%else%}
+                   <h4>Payment Status : Unpaid</h4>
+                   {%endif%}
+
+               </div>
+           </div>
+       </div>
+
+       <h1 class="text-center">Attendance Status</h1>
+       <hr>
+       <table class="table my-4 table table-dark table-striped">
+  <thead class="thead-dark">
+
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Date</th>
+      <th scope="col">Login Time</th>
+      <th scope="col">Logout Time</th>
+      <th scope="col">Approval Status</th>
+    </tr>
+  </thead>
+  <tbody>
+  {%for a in attendstats%}
+    <tr>
+      <th scope="row">{{a.name}}</th>
+      <td>{{a.date}}</td>
+      <td>{{a.logintime}}</td>
+      <td>{{a.logouttime}}</td>
+        {%if a.approve == True%}
+      <td><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-toggle-on mx-2 text-success" viewBox="0 0 16 16">
+              <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+            </svg> Approved</span></td>
+        {%else%}
+         <td><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-toggle-off mx-2 text-warning" viewBox="0 0 16 16">
+              <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+            </svg> Pending</span></td>
+        {%endif%}
+        {%endfor%}
+    </tr>
+
+
+  </tbody>
+</table>
+   </div>
+
+</div>
+
+
+
+
+
+
+</div>
+
+{%endblock%}

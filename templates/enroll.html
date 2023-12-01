@@ -1,0 +1,189 @@
+{%extends 'base.html'%}
+
+
+{%block title%} Enroll {%endblock%}
+
+
+{%block body%}
+
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1 class="text-center bg-primary text-light mt-3">Enroll Now</h1>
+            {%include 'messages.html'%}
+
+            <hr>
+            <form action="{%url 'enroll'%}" method="post">
+                {%csrf_token%}
+                <br/>
+                <label for="fname">First Name</label>
+                <div class="form-group">
+                    <input
+                    type="text"
+                    class="form-control p-2 mb-3"
+                    id="fname"
+                    name="fname"
+                    placeholder="Enter First Name"
+                    required
+                    />
+                </div>
+                 <label for="lname">Last Name</label>
+                <div class="form-group">
+                    <input
+                    type="text"
+                    class="form-control p-2 mb-3"
+                    id="lname"
+                    name="lname"
+                    placeholder="Enter Last Name"
+                    required
+                    />
+                </div>
+
+                <label for="num">Phone Number</label>
+                <div class="form-group">
+                    <input
+                    type="number"
+                    class="form-control p-2 mb-3"
+                    id="num"
+                    name="num"
+                    placeholder="Enter Valid Number"
+                    required
+                    />
+                </div>
+                <label for="altnum">Alternate Number</label>
+                <div class="form-group">
+                    <input
+                    type="number"
+                    class="form-control p-2 mb-3"
+                    id="altnum"
+                    name="altnum"
+                    placeholder="Alternate Numbe"
+                    required
+                    />
+                </div>
+
+                <label for="email">Email</label>
+                <div class="form-group">
+                    <input
+
+                    value="{{request.user.email}}"
+                    class="form-control p-2 mb-3"
+                    id="email"
+                    name="email"
+
+                    />
+                </div>
+
+                <label for="cname">College Name</label>
+                <div class="form-group">
+                    <input
+                    type="text"
+                    class="form-control p-2 mb-3"
+                    id="cname"
+                    name="cname"
+                    placeholder="Enter College Name"
+                    required
+                    />
+                </div>
+
+                 <label for="address">Address</label>
+                <div class="form-group">
+                    <input
+                    type="text"
+                    class="form-control p-2 mb-3"
+                    id="address"
+                    name="address"
+                    placeholder="Enter Address"
+                    required
+                    />
+                </div>
+
+                <label for="street">Street</label>
+                <div class="form-group">
+                    <input
+                    type="text"
+                    class="form-control p-2 mb-3"
+                    id="street"
+                    name="street"
+                    placeholder="Street Name"
+                    required
+                    />
+                </div>
+
+                 <label for="city">City</label>
+                <div class="form-group">
+                    <input
+                    type="text"
+                    class="form-control p-2 mb-3"
+                    id="city"
+                    name="city"
+                    placeholder="City"
+                    required
+                    />
+                </div>
+
+                 <label for="pin">Pin Code</label>
+                <div class="form-group">
+                    <input
+                    type="text"
+                    class="form-control p-2 mb-3"
+                    id="pin"
+                    name="pin"
+                    placeholder="Pin Code"
+                    required
+                    />
+                </div>
+
+                <label><b>Computer Knowledge</b></label>
+
+                 <div class="form-control-inline">
+                    <label for="basic">Basic</label>
+
+                    <input type="radio" class="form-check-inline" id="basic"
+                      name="cmp" value="Basic" required>
+                </div>
+
+                <div class="form-control-inline">
+                    <label for="intermediate">Intermediate</label>
+
+                    <input type="radio" class="form-check-inline" id="intermediate"
+                      name="cmp" value="Intermediate" required>
+                </div>
+
+                <div class="form-control-inline">
+                    <label for="Advance">Advance</label>
+
+                    <input type="radio" class="form-check-inline" id="Advance"
+                      name="cmp" value="Advance" required>
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="scourse"><b>Select Course</b></label>
+                    <select class="form-control" id="scourse" name="scourse" required>
+                    <option value="select">Choose Course</option>
+                    {%for c in courses%}
+                    <option value="{{c.course_name}}">{{c.course_name}}</option>
+                    {%endfor%}
+
+                    </select>
+                </div>
+                <br>
+                <div class="d-grid gap-2 mb3">
+                    <button type="submit" class="btn btn-success get-started-btn">Register</button>
+                </div>
+
+            </form>
+
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+
+
+
+{%endblock%}
